@@ -6,6 +6,7 @@ html {
 body {
     margin-bottom: 90px;
     font-size: 15px;
+    background-color: #e8ebef;
 }
 
 .padding {
@@ -61,7 +62,7 @@ button {
 }
 
 .myNav {
-    margin-bottom: 3em;
+    margin: 0 0 3em 20px;
     border-color: #000;
     border-radius: 3px;
     width: fit-content;
@@ -78,6 +79,7 @@ button {
 a {
     color: #dcd2d2;
     text-decoration: none;
+    display: block;
 }
 
 form h2 {
@@ -98,4 +100,37 @@ hr {
 
 form {
     margin-bottom: 50px;
+}
+
+li {
+    list-style: none;
+    margin: 10px 0px;
+    padding: 5px;
+    border: 1px solid #008eff;
+    width: 60%;
+}
+
+
+li a:hover {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+li:hover {
+    border: 1px solid #fff;
+}
+
+.myNav:hover {
+    background: #b1e29d;
+}
+
+
+.pagination-btns {
+    margin-left: 20px;
+}
+
+h2 {
+    color: aqua;
 }

@@ -78,6 +78,7 @@ function JobController(JobsDataFactory, $routeParams, $scope) {
             $scope.showFullUpdateForm = false;
         } else {
             $scope.showFullUpdateForm = true;
+            $scope.showPartialUpdateForm = false;
         }
     }
 
@@ -88,6 +89,7 @@ function JobController(JobsDataFactory, $routeParams, $scope) {
             $scope.showPartialUpdateForm = false;
         } else {
             $scope.showPartialUpdateForm = true;
+            $scope.showFullUpdateForm = false;
         }
     }
 

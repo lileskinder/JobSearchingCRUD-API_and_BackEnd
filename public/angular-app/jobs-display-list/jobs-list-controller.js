@@ -4,9 +4,9 @@ function JobsController(JobsDataFactory, $routeParams, $location, $scope) { //Jo
     const vm = this;
 
     this.offset = $routeParams.offset ? $routeParams.offset : 0;
-    this.urlQuery = this.offset !== 0 ? "?offset=" + this.offset : "";
+    this.query = this.offset !== 0 ? "?offset=" + this.offset : "";
 
-    JobsDataFactory.getAll(this.urlQuery).then(function (response) {
+    JobsDataFactory.getAll(this.query).then(function (response) {
         vm.jobs = response;
     });
 
@@ -14,15 +14,19 @@ function JobsController(JobsDataFactory, $routeParams, $location, $scope) { //Jo
         this.query = { offset: parseInt(this.offset) + 10 };
         $location.search(this.query);
         JobsDataFactory
-            .getAll(this.urlQuery)
-            .then(jobs => this.jobs = jobs)
-            .catch(err => console.log(err))
+            .getAll(this.query)
+            .then(function (jobs) {
+                this.jobs = jobs
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
     }
     vm.previous = function () {
         this.query = { offset: parseInt(this.offset) - 10 };
         $location.search(this.query);
         JobsDataFactory
-            .getAll(this.urlQuery)
+            .getAll(this.query)
             .then(function (jobs) {
                 this.jobs = jobs
             }).catch(function (err) {
@@ -31,10 +35,9 @@ function JobsController(JobsDataFactory, $routeParams, $location, $scope) { //Jo
     }
 
     vm.searching = function () {
-        console.log("this is search function")
         JobsDataFactory.searchByTiltle(vm.search).then(function (response) {
-            vm.jobs = response;
-            console.log("sfsdgfsg ", vm.jobs);
+            if (response != "")
+                vm.jobs = response;
         });
     }
 
