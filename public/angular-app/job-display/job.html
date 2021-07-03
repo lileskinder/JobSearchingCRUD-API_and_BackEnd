@@ -1,0 +1,89 @@
+<div class="main-page">
+    <div class="list">
+        <h1>Information about the job</h1>
+        <hr>
+
+        <p>
+        <h2>{{vm.job.title}}</h2>
+        <b>Salary:</b> {{vm.job.salary | currency}} <br>
+        <b>Location:</b> {{vm.job.location}} <br>
+        <b>Description:</b> {{vm.job.description}} <br>
+        <b>Experience:</b>{{vm.job.experience}} <br>
+        <b>Skills:</b> {{vm.job.minAge}} <br>
+        <b>Post Date:</b> {{vm.job.postDate}}
+        </p>
+
+        <button type="button" class="btn-warning" ng-click="vm.deleteJob(); vm.showText();">Delete</button>
+        <button type="button" class="btn-secondary" ng-click="IsFullUpdateVisible();">Full Update</button>
+        <button type="button" class="btn-secondary" ng-click="IsPartialUpdateVisible();">Partial Update</button><br>
+        <span ng-show="showDeleted" style="color: red;">{{vm.updatedJobTitle}} Job is successfully Deleted!</span><br>
+
+    </div>
+
+
+    <div class="form">
+        <form name="vm.jobForm" ng-show="showFullUpdateForm" ng-submit="vm.fullUpdateJob()">
+            <h2> Full Update</h2>
+            <h4 class="form-info">All the Fields Are required </h4><br>
+            <hr>
+            Title:<br><input type="text" name="title" required ng-model="vm.updatedJobTitle"
+                style="color: black;" /><br>
+
+            Salary:<br> <input type="number" name="salary" required ng-model="vm.updatedJobSalary"
+                style="color: black;" /><br>
+
+            Location:<br> <input type="text" name="location" required ng-model="vm.updatedJobLocation"
+                style="color: black;" /><br>
+
+            Description:<br><input type="text" name="description" required ng-model="vm.updatedJobDescription"
+                style="color: black;" /><br>
+
+            Experience:<br> <input type="text" name="experience" required ng-model="vm.updatedJobMinExperience"
+                style="color: black;" /><br>
+
+            Skills:<br> <input type="text" name="skills" required ng-model="vm.updatedJobSkills"
+                style="color: black;" /><br>
+
+            Post Date:<br><input type="date" name="postDate" required ng-model="vm.updatedJobPostDate"
+                style="color: black;" /><br>
+
+            <button type="submit" class="btn-success">Update Job</button><br>
+            <span ng-show="showFullUpdate" style="color: red;">{{vm.updatedJobTitle}} Job Fully Updated!<br/> Please reload to see the changes!</span><br>
+        </form>
+
+
+        <!-- The Below is for partial update -->
+        <form name="vm.jobForm" ng-show="showPartialUpdateForm" ng-submit="vm.partialUpdateJob()">
+
+            <h2>Partial Update</h2>
+            <h4 class="form-info">Update a field or fields you want</h4><br>
+            <hr> <br>
+            Title:<br><input type="text" name="title" ng-model="vm.updatedJobTitle" style="color: black;" /><br>
+            
+
+            Salary:<br> <input type="number" name="salary" ng-model="vm.updatedJobSalary"
+                style="color: black;" /><br>
+
+            Location:<br><input type="text" name="location" ng-model="vm.updatedJobLocation"
+                style="color: black;" /><br>
+
+            Description:<br><input type="text" name="description" ng-model="vm.updatedJobDescription"
+                style="color: black;" /><br>
+
+            Experience:<br><input type="text" name="experience" ng-model="vm.updatedJobMinExperience"
+                style="color: black;" /><br>
+
+            Skills:<br> <input type="text" name="skills" ng-model="vm.updatedJobSkills" style="color: black;" /><br>
+
+            Post Date:<br><input type="date" name="postDate" ng-model="vm.updatedJobPostDate"
+                style="color: black;" /><br>
+
+            <button type="submit" class="btn-success">Update Job</button> <br>
+
+            <span ng-show="showPartialUpdate" style="color: red;">{{vm.updatedJobTitle}} Job Partially Updated!<br> Please reload to see the changes!</span><br>
+
+
+        </form>
+    </div>
+
+</div>

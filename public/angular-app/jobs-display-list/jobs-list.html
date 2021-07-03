@@ -1,0 +1,54 @@
+<h1>
+    {{vm.title}}
+</h1>
+
+<div class="main-page">
+    <!-- | filter: search"-->
+    <div class="list">
+        <ul>
+            <input type="text" ng-model="vm.search"> 
+            <button class="btn-primary" ng-click="vm.searching()"> Search </button>
+            <li ng-repeat="job in vm.jobs"> 
+                <a ng-href="#!/jobs/{{job._id}}">{{job.title}}</a> 
+            </li>
+        </ul>
+
+        <div>
+                <button class="btn-primary" ng-click="vm.next()" ng-hide="vm.games.length == 0"> Next </button>
+                <button class="btn-primary" ng-click="vm.previous()" ng-hide="vm.offset == 0"> Previous </button>
+        </div>
+    </div>
+
+    <div class="form">
+        <form name="vm.jobForm" ng-submit="vm.addJob()">
+            <h2> Add a new Job</h2>
+            <hr> <br>
+
+            Title:<br> <input type="text" name="title" required ng-model="vm.newJobTitle" style="color: black;" /><br>
+            <!-- <span ng-show="vm.jobForm.title.$touched && vm.jobForm.title.$invalid" style="color: red;">The name
+                is required.</span><br> -->
+
+            Salary:<br><input type="number" name="salary" required ng-model="vm.newJobSalary"
+                style="color: black;" /><br>
+
+            Location:<br><input type="text" name="location" required ng-model="vm.newJobLocation"
+                style="color: black;" /><br>
+
+            Description:<br><input type="text" name="description" required ng-model="vm.newJobDescription"
+                style="color: black;" /><br>
+
+            Experience:<br><input type="text" name="experience" required ng-model="vm.newJobMinExperience"
+                style="color: black;" /><br>
+
+            Skills:<br><input type="text" name="skills" required ng-model="vm.newJobSkills" style="color: black;" /><br>
+
+            Post Date:<br><input type="date" name="postDate" required ng-model="vm.newJobPostDate"
+                style="color: black;" /><br>
+
+            <button type="submit" class="btn-success">Add Job</button><br>
+
+             <span ng-show="showAdded" style="color: red;">{{vm.newJobTitle}} Job Added!</span><br>
+        </form>
+    </div>
+
+</div>
